@@ -50,6 +50,7 @@ public class LevelMenuManager : MonoBehaviourPunCallbacks
 
     public void OnQuitButtonClicked()
     {
+        SetCursor(true);
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene(0);        
     }

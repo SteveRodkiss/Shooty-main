@@ -63,7 +63,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
         {
             //pick/load a room
-            PhotonNetwork.LoadLevel("SampleScene");
+            PhotonNetwork.LoadLevel(LevelToLoad);
         } 
     }
 
