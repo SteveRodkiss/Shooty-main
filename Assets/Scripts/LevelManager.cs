@@ -7,7 +7,8 @@ using Photon.Realtime;
 public class LevelManager : MonoBehaviour
 {
     //the player prefab to spawn in
-    public PhotonView playerPrefab;
+    public PhotonView redPlayerPrefab;
+    public PhotonView bluePlayerPrefab;
 
     [HideInInspector]
     public GameObject localPlayerGameObject;
@@ -28,9 +29,15 @@ public class LevelManager : MonoBehaviour
     //Spawn the local player across the network.
     private void SpawnLocalPlayer()
     {
+        var teamNumber = (byte)PhotonNetwork.LocalPlayer.CustomProperties["_pt"];
+        Debug.Log($"SpawnLocalPlayer for team {teamNumber}");
+        //team will be 1 for blue, 2 for red- set the right player prefab name so we can load it
+        var prefabName = teamNumber == 1 ? bluePlayerPrefab.name : redPlayerPrefab.name;
+        Debug.Log($"Spawning the prefab {prefabName}");
         Debug.Log($"Spawning Local Player for {PhotonNetwork.LocalPlayer}");
-        Transform t = spawnManager.GetNextSpawn();
-        localPlayerGameObject = PhotonNetwork.Instantiate(playerPrefab.name,t.position,t.rotation);
+        //todo get the local player team and spawn the right player!
+        Transform t = spawnManager.GetNextSpawn(teamNumber == 1 ? Team.Blue : Team.Red);
+        localPlayerGameObject = PhotonNetwork.Instantiate(prefabName,t.position,t.rotation);
         localPlayerHealthScript =  localPlayerGameObject.GetComponent<PlayerHealth>();
         localPlayerHealthScript.playerKilled += OnLocalPlayerKilled;
         //make sure it is not paused in the levelmenumanager

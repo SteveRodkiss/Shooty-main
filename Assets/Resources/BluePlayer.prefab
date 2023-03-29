@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9192883218120405164}
   - component: {fileID: 8871546194543797818}
   - component: {fileID: 5495968692858106204}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: NickNameTextLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,8 +190,8 @@ GameObject:
   - component: {fileID: 7314201262029225426}
   - component: {fileID: 207154124474013490}
   - component: {fileID: 11370914561320161}
-  m_Layer: 6
-  m_Name: Player
+  m_Layer: 7
+  m_Name: BluePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 3401061057930056701}
   - component: {fileID: 3401061057930056703}
   - component: {fileID: 3401061057930056702}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3401061058284835956}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: CameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 3401061058751148931}
   - component: {fileID: 3401061058751148942}
   - component: {fileID: 3401061058751148941}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PlayerMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8e94347a64c8cff4c9e8fd023dcf824b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 3401061058782160475}
   - component: {fileID: 3401061058782160474}
   - component: {fileID: 3401061058782160473}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ GameObject:
   - component: {fileID: 3401061058801610150}
   - component: {fileID: 3401061058801610151}
   - component: {fileID: 3401061058801610144}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3401061058887396241}
   - component: {fileID: 3401061058887396240}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: GunHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3401061059094234908}
   - component: {fileID: 3401061059094234909}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PlayerVirtualCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 118234, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 453068, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}
       propertyPath: m_RootOrder
@@ -1029,7 +1029,7 @@ PrefabInstance:
     - target: {fileID: 5637635935639537223, guid: a4e476a037022df448ead5d0ceea7d06,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3401061058762284919, guid: a4e476a037022df448ead5d0ceea7d06, type: 3}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 using UnityEngine.SceneManagement;
 
 public class LevelMenuManager : MonoBehaviourPunCallbacks
@@ -24,7 +25,7 @@ public class LevelMenuManager : MonoBehaviourPunCallbacks
         {
             isEnabled = !isEnabled;
             SetMenuEnabled(isEnabled);
-        }        
+        }
     }
 
     public void SetMenuEnabled(bool _enabled)
@@ -50,15 +51,18 @@ public class LevelMenuManager : MonoBehaviourPunCallbacks
 
     public void OnQuitButtonClicked()
     {
+        //leave the team
+        PhotonNetwork.LocalPlayer.LeaveCurrentTeam();
         SetCursor(true);
+        //leave the room- will run OnLeftRoom when complete
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);        
     }
 
     public override void OnLeftRoom()
     {
-        base.OnLeftRoom();
+
         SceneManager.LoadScene(0);
+        base.OnLeftRoom();
     }
 
 

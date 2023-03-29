@@ -15,6 +15,18 @@ public class LaserGunScript : MonoBehaviourPunCallbacks
     public AudioClip damageHitMarkerAudioClip;
     public AudioClip laserSoundAudioClip;
 
+    //the layer to ignore when casting rays- ie what team are we on!
+    [Tooltip("The layer to ignore when casting rays- ie what team are we on!")]
+    public LayerMask layerMask;
+
+    void Start()
+    {
+        //set the layermask to ignore the layer we are on
+        layerMask = ~(1 << gameObject.layer);
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -30,35 +42,7 @@ public class LaserGunScript : MonoBehaviourPunCallbacks
         }
     }
 
-    ////Every clone of this local player shoots too
-    //[PunRPC]
-    //public void Shoot(int shooterActornumber)
-    //{
-    //    Debug.Log($"Calling Shoot PunRPC with photonView {photonView} localplayer = {photonView.IsMine}");
-    //    //play the shoot animation
-    //    animator.SetTrigger("Shoot");
-    //    //playe the sound
-    //    audioSource.PlayOneShot(laserSoundAudioClip);
-    //    var trail = Instantiate(laserTrailPrefab, originTransform.position, originTransform.rotation);
-    //    trail.AddPosition(originTransform.position);
-    //    //cast forward to see where we hit
-    //    var ray = new Ray(originTransform.position, originTransform.forward);
-    //    Vector3 hitPoint = originTransform.position + originTransform.forward * 1000f;
-    //    if (Physics.Raycast(ray, out RaycastHit hit,1000f))
-    //    {
-    //        hitPoint = hit.point;
-    //        Instantiate(hitParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
-    //        //check what we hit and if we are we are the local player do damage to the player we hit
-    //        var playerHealth = hit.collider.GetComponent<PlayerHealth>();
-    //        if(playerHealth != null && photonView.IsMine)
-    //        {
-    //            Debug.Log($"Player {photonView} is damaging player {hit.collider.GetComponent<PhotonView>()}");
-    //            //playerHealth.TakeDamage(500, shooterActornumber);
-    //            audioSource.PlayOneShot(damageHitMarkerAudioClip);
-    //        }
-    //    }
-    //    trail.transform.position = hitPoint;
-    //}
+
 
     [PunRPC]
     public void ShootVisuals()
@@ -72,7 +56,7 @@ public class LaserGunScript : MonoBehaviourPunCallbacks
         //cast forward to see where we hit
         var ray = new Ray(originTransform.position, originTransform.forward);
         Vector3 hitPoint = originTransform.position + originTransform.forward * 1000f;
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f,layerMask))
         {
             hitPoint = hit.point;
             Instantiate(hitParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
@@ -88,7 +72,7 @@ public class LaserGunScript : MonoBehaviourPunCallbacks
         //cast forward to see where we hit
         var ray = new Ray(originTransform.position, originTransform.forward);
         Vector3 hitPoint = originTransform.position + originTransform.forward * 1000f;
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, layerMask))
         {
             hitPoint = hit.point;
             Instantiate(hitParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
