@@ -14,6 +14,8 @@ public class LaserGunScript : MonoBehaviourPunCallbacks
     public AudioSource audioSource;
     public AudioClip damageHitMarkerAudioClip;
     public AudioClip laserSoundAudioClip;
+    private float fireRate = 0.2f;
+    private float fireTimer = 0f;
 
     //the layer to ignore when casting rays- ie what team are we on!
     [Tooltip("The layer to ignore when casting rays- ie what team are we on!")]
@@ -30,8 +32,11 @@ public class LaserGunScript : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && photonView.IsMine)
+        fireTimer += Time.deltaTime;
+        if(Input.GetButton("Fire1") && photonView.IsMine && fireTimer > fireRate)
         {
+            //update timer
+            fireTimer = 0f;
             //wo am I?
             int userid = PhotonNetwork.LocalPlayer.ActorNumber;
             //run the rpc so even the clone shoots
